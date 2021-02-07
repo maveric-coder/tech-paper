@@ -27,6 +27,8 @@ These patterns provide various object creation mechanisms, which increase flexib
 
 Prototype is a creational design pattern that makes use of existing objects without making the code dependent on their classes. It avoids the inherent cost of creating a new object in the standard way. The implementation of this method is typical in all classes. This method creates an object of the current class and carries over all of the field values of the old object into the new one. 
 
+### *#Pseudocode*
+In this example, the Composite pattern enables us to implement stacking of geometric shapes in a graphical editor.
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example.png" />
 
 
@@ -107,6 +109,9 @@ end
 
 
 ## 2. Decorator
+
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/decorator.png" />
+
 The decorator is a design pattern that enables us to add behaviours to an individual object dynamically without affecting the behaviour of other objects of the same class. It adheres to the Single Responsibility Principle as it allows functionality to be divided between classes with distinct demands. They are more efficient than subclassing as new behaviours can be added to an object without instantiating a completely new object.
 
 Extending a class is the first thing that comes to mind when we need to alter an object’s behaviour. However, inheritance has several serious limitations.
@@ -117,6 +122,96 @@ One of the most convenient ways to tackle these limitations is by using Aggregat
 
 
 
+
+### *#Pseudocode*
+
+In this example, the Decorator pattern lets you compress and encrypt sensitive data independently from the code that actually uses this data.
+
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(1).png" />
+
+```
+
+# The base Component interface defines operations that can be altered by
+# decorators.
+class Component
+  # @return [String]
+  def operation
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+end
+
+# Concrete Components provide default implementations of the operations. There
+# might be several variations of these classes.
+class ConcreteComponent < Component
+  # @return [String]
+  def operation
+    'ConcreteComponent'
+  end
+end
+
+# The base Decorator class follows the same interface as the other components.
+# The primary purpose of this class is to define the wrapping interface for all
+# concrete decorators. The default implementation of the wrapping code might
+# include a field for storing a wrapped component and the means to initialize
+# it.
+class Decorator < Component
+  attr_accessor :component
+
+  # @param [Component] component
+  def initialize(component)
+    @component = component
+  end
+
+  # The Decorator delegates all work to the wrapped component.
+  def operation
+    @component.operation
+  end
+end
+
+# Concrete Decorators call the wrapped object and alter its result in some way.
+class ConcreteDecoratorA < Decorator
+  # Decorators may call parent implementation of the operation, instead of
+  # calling the wrapped object directly. This approach simplifies extension of
+  # decorator classes.
+  def operation
+    "ConcreteDecoratorA(#{@component.operation})"
+  end
+end
+
+# Decorators can execute their behavior either before or after the call to a
+# wrapped object.
+class ConcreteDecoratorB < Decorator
+  # @return [String]
+  def operation
+    "ConcreteDecoratorB(#{@component.operation})"
+  end
+end
+
+# The client code works with all objects using the Component interface. This way
+# it can stay independent of the concrete classes of components it works with.
+def client_code(component)
+  # ...
+
+  print "RESULT: #{component.operation}"
+
+  # ...
+end
+
+# This way the client code can support both simple components...
+simple = ConcreteComponent.new
+puts 'Client: I\'ve got a simple component:'
+client_code(simple)
+puts "\n\n"
+
+# ...as well as decorated ones.
+#
+# Note how decorators can wrap not only simple components but the other
+# decorators as well.
+decorator1 = ConcreteDecoratorA.new(simple)
+decorator2 = ConcreteDecoratorB.new(decorator1)
+puts 'Client: Now I\'ve got a decorated component:'
+client_code(decorator2)
+```
 
 
 
