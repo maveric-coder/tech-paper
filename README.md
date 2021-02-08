@@ -598,3 +598,11 @@ invoker.on_finish = ComplexCommand.new(receiver, 'Send email', 'Save report')
 invoker.do_something_important
 ```
 
+## Refrences
+
+1. [Wikipedia](https://en.wikipedia.org/wiki/Design_Patterns)
+2. [Refactoring Guru](https://refactoring.guru/design-patterns/ruby)
+3. [Geekswithblogs](http://geekswithblogs.net/subodhnpushpak/archive/2009/09/18/the-23-gang-of-four-design-patterns-.-revisited.aspx)
+4. [FreeCodeCamp](https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/)
+5. [Naturaily](https://naturaily.com/blog/ruby-on-rails-design-patterns)
+6. [Dev.to](https://dev.to/renatamarques97/design-patterns-with-ruby-on-rails-part-1-introduction-and-policy-object-1c37)
