@@ -217,6 +217,8 @@ client_code(decorator2)
 
 ## 3. Composite
 
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/composite.png" />
+
 This pattern describes a group of objects that are treated similarly as that of a single instance of the same type of object. It intends to compose objects into tree structures and then work with these structures as if they were individual objects.
 
 
@@ -224,6 +226,8 @@ This pattern describes a group of objects that are treated similarly as that of 
 
 The CompoundGraphic class is a container that can consist of any sub-shape, but the compound shape has limited methods as a simple shape. However, instead of doing something by itself, a compound shape passes the request recursively to its children and aggregates the result.
 The client code works with all shaps through the single interface typical to all shape classes. Thus, the performance does not get affected, and the client can work with sophisticated object structures.
+
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(2).png" />
 
 ```
 # The base Component class declares common operations for both simple and
@@ -367,12 +371,16 @@ client_code2(tree, simple)
 
 ## 4. Observer
 
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/observer.png" />
+
 This design pattern enables to define a subscription mechanism which notifies multiple objects automatically, in case of any changes made on the method under observation. It is used for implementing distributed event handling systems in event-driven software. 
 
 
 ### *#Pseudocode*
 
 In this example, the Observer pattern lets the text editor object notify other service objects about changes in its state. The list of subscribers is compiled dynamically: objects can start or stop listening to notifications at runtime, depending on the desired behavior of the app.
+
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(3).png" />
 
 ```
 # The Subject interface declares a set of methods for managing subscribers.
@@ -487,15 +495,17 @@ subject.detach(observer_a)
 subject.some_business_logic
 ```
 ## 5. Command
+command-en.png
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/command-en.png" />
 
-It is a design pattern that turns a request into a stand-alone object that consists of all the information about the request.
-It is a design pattern in which an object is used to encapsulate all the information needed to perform an action or trigger an event at a later time. 
+It is a design pattern that turns a request into a stand-alone object that consists of all the information about the request. It is a design pattern in which an object is used to encapsulate all the information needed to perform an action or trigger an event at a later time. 
 
 
 ### *#Pseudocode*
 
 In this example, the Command pattern helps to track the history of executed operations and makes it possible to revert an operation if needed.
 
+<img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(4).png" />
 
 ```# The Command interface declares a method for executing a command.
 class Command
