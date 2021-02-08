@@ -495,7 +495,7 @@ subject.detach(observer_a)
 subject.some_business_logic
 ```
 ## 5. Command
-command-en.png
+
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/command-en.png" />
 
 It is a design pattern that turns a request into a stand-alone object that consists of all the information about the request. It is a design pattern in which an object is used to encapsulate all the information needed to perform an action or trigger an event at a later time. 
