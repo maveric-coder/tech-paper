@@ -218,3 +218,280 @@ client_code(decorator2)
 ## 3. Composite
 
 This pattern describes a group of objects that are treated similarly as that of a single instance of the same type of object. It intends to compose objects into tree structures and then work with these structures as if they were individual objects.
+
+
+### *#Pseudocode*
+
+The CompoundGraphic class is a container that can consist of any sub-shape, but the compound shape has limited methods as a simple shape. However, instead of doing something by itself, a compound shape passes the request recursively to its children and aggregates the result.
+The client code works with all shaps through the single interface typical to all shape classes. Thus, the performance does not get affected, and the client can work with sophisticated object structures.
+
+```
+# The base Component class declares common operations for both simple and
+# complex objects of a composition.
+class Component
+  # @return [Component]
+  def parent
+    @parent
+  end
+
+  # Optionally, the base Component can declare an interface for setting and
+  # accessing a parent of the component in a tree structure. It can also provide
+  # some default implementation for these methods.
+  def parent=(parent)
+    @parent = parent
+  end
+
+  # In some cases, it would be beneficial to define the child-management
+  # operations right in the base Component class. This way, you won't need to
+  # expose any concrete component classes to the client code, even during the
+  # object tree assembly. The downside is that these methods will be empty for
+  # the leaf-level components.
+  def add(component)
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+
+  # @abstract
+  #
+  # @param [Component] component
+  def remove(component)
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+
+  # You can provide a method that lets the client code figure out whether a
+  # component can bear children.
+  def composite?
+    false
+  end
+
+  # The base Component may implement some default behavior or leave it to
+  # concrete classes (by declaring the method containing the behavior as
+  # "abstract").
+  def operation
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+end
+
+# The Leaf class represents the end objects of a composition. A leaf can't have
+# any children.
+#
+# Usually, it's the Leaf objects that do the actual work, whereas Composite
+# objects only delegate to their sub-components.
+class Leaf < Component
+  # return [String]
+  def operation
+    'Leaf'
+  end
+end
+
+# The Composite class represents the complex components that may have children.
+# Usually, the Composite objects delegate the actual work to their children and
+# then "sum-up" the result.
+class Composite < Component
+  def initialize
+    @children = []
+  end
+
+  # A composite object can add or remove other components (both simple or
+  # complex) to or from its child list.
+
+  # @param [Component] component
+  def add(component)
+    @children.append(component)
+    component.parent = self
+  end
+
+  # @param [Component] component
+  def remove(component)
+    @children.remove(component)
+    component.parent = nil
+  end
+
+  # @return [Boolean]
+  def composite?
+    true
+  end
+
+  # The Composite executes its primary logic in a particular way. It traverses
+  # recursively through all its children, collecting and summing their results.
+  # Since the composite's children pass these calls to their children and so
+  # forth, the whole object tree is traversed as a result.
+  def operation
+    results = []
+    @children.each { |child| results.append(child.operation) }
+    "Branch(#{results.join('+')})"
+  end
+end
+
+# The client code works with all of the components via the base interface.
+def client_code(component)
+  puts "RESULT: #{component.operation}"
+end
+
+# Thanks to the fact that the child-management operations are declared in the
+# base Component class, the client code can work with any component, simple or
+# complex, without depending on their concrete classes.
+def client_code2(component1, component2)
+  component1.add(component2) if component1.composite?
+
+  print "RESULT: #{component1.operation}"
+end
+
+# This way the client code can support the simple leaf components...
+simple = Leaf.new
+puts 'Client: I\'ve got a simple component:'
+client_code(simple)
+puts "\n"
+
+# ...as well as the complex composites.
+tree = Composite.new
+
+branch1 = Composite.new
+branch1.add(Leaf.new)
+branch1.add(Leaf.new)
+
+branch2 = Composite.new
+branch2.add(Leaf.new)
+
+tree.add(branch1)
+tree.add(branch2)
+
+puts 'Client: Now I\'ve got a composite tree:'
+client_code(tree)
+puts "\n"
+
+puts 'Client: I don\'t need to check the components classes even when managing the tree:'
+client_code2(tree, simple)
+```
+
+
+
+## 4. Observer
+
+This design pattern enables to define a subscription mechanism which notifies multiple objects automatically, in case of any changes made on the method under observation. It is used for implementing distributed event handling systems in event-driven software. 
+
+
+### *#Pseudocode*
+
+In this example, the Observer pattern lets the text editor object notify other service objects about changes in its state. The list of subscribers is compiled dynamically: objects can start or stop listening to notifications at runtime, depending on the desired behavior of the app.
+
+```
+# The Subject interface declares a set of methods for managing subscribers.
+class Subject
+  # Attach an observer to the subject.
+  def attach(observer)
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+
+  # Detach an observer from the subject.
+  def detach(observer)
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+
+  # Notify all observers about an event.
+  def notify
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+end
+
+# The Subject owns some important state and notifies observers when the state
+# changes.
+class ConcreteSubject < Subject
+  # For the sake of simplicity, the Subject's state, essential to all
+  # subscribers, is stored in this variable.
+  attr_accessor :state
+
+  # @!attribute observers
+  # @return [Array<Observer>] attr_accessor :observers private :observers
+
+  def initialize
+    @observers = []
+  end
+
+  # List of subscribers. In real life, the list of subscribers can be stored
+  # more comprehensively (categorized by event type, etc.).
+
+  # @param [Obserser] observer
+  def attach(observer)
+    puts 'Subject: Attached an observer.'
+    @observers << observer
+  end
+
+  # @param [Obserser] observer
+  def detach(observer)
+    @observers.delete(observer)
+  end
+
+  # The subscription management methods.
+
+  # Trigger an update in each subscriber.
+  def notify
+    puts 'Subject: Notifying observers...'
+    @observers.each { |observer| observer.update(self) }
+  end
+
+  # Usually, the subscription logic is only a fraction of what a Subject can
+  # really do. Subjects commonly hold some important business logic, that
+  # triggers a notification method whenever something important is about to
+  # happen (or after it).
+  def some_business_logic
+    puts "\nSubject: I'm doing something important."
+    @state = rand(0..10)
+
+    puts "Subject: My state has just changed to: #{@state}"
+    notify
+  end
+end
+
+# The Observer interface declares the update method, used by subjects.
+class Observer
+  # Receive update from subject.
+  def update(_subject)
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+end
+
+# Concrete Observers react to the updates issued by the Subject they had been
+# attached to.
+
+class ConcreteObserverA < Observer
+  # @param [Subject] subject
+  def update(subject)
+    puts 'ConcreteObserverA: Reacted to the event' if subject.state < 3
+  end
+end
+
+class ConcreteObserverB < Observer
+  # @param [Subject] subject
+  def update(subject)
+    return unless subject.state.zero? || subject.state >= 2
+
+    puts 'ConcreteObserverB: Reacted to the event'
+  end
+end
+
+# The client code.
+
+subject = ConcreteSubject.new
+
+observer_a = ConcreteObserverA.new
+subject.attach(observer_a)
+
+observer_b = ConcreteObserverB.new
+subject.attach(observer_b)
+
+subject.some_business_logic
+subject.some_business_logic
+
+subject.detach(observer_a)
+
+subject.some_business_logic
+```
+## 5. Command
+
+It is a design pattern that turns a request into a stand-alone object that consists of all the information about the request.
+It is a design pattern in which an object is used to encapsulate all the information needed to perform an action or trigger an event at a later time. 
+
+
+### *#Pseudocode*
+
+In this example, the Command pattern helps to track the history of executed operations and makes it possible to revert an operation if needed.
