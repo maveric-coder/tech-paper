@@ -2,7 +2,7 @@
 
 ## Index
 * [Introduction](#what-is-a-design-pattern)
-* [Types](#types-of-design-pattern)
+* [Types](#types-of-design-patterns)
 
 
 ### What is a Design Pattern?
