@@ -3,7 +3,9 @@
 ## Index
 * [Introduction](#what-is-a-design-pattern)
 * [Basic classification](#types-of-design-patterns)
-* [5 Types of Design Patterns](#5-types-of-degin-patterns:)
+* [5 Types of Design Patterns](#5-types-of-design-patterns:)
+    * [Prototype](#1-prototype)
+    * 
 
 
 ### What is a Design Pattern?
@@ -24,7 +26,7 @@ These patterns provide various object creation mechanisms, which increase flexib
 3. Behavioral: These patterns are designed depending on how one class communicates with others.
 
 
-## 5 Types of degin patterns:
+## 5 Types of design patterns:
 
 ## 1. Prototype
 
@@ -36,7 +38,7 @@ Prototype is a creational design pattern that makes use of existing objects with
 In this example, the Composite pattern enables us to implement stacking of geometric shapes in a graphical editor.
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example.png" />
 
-
+s
 ```
 # The example class that has cloning ability. We'll see how the values of field
 # with different types will be cloned.
