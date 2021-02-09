@@ -26,7 +26,7 @@ There are approximately 22 design patterns and  are grouped into 3 types:
 These patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
 
 **2. Structural:**
-These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
+These patterns explain how to assemble objects and classes into larger structures while keeping the structures flexible and efficient.
 
 **3. Behavioral:**
 These patterns are designed depending on how one class communicates with others.
@@ -127,9 +127,7 @@ end
 The decorator is a design pattern that enables us to add behaviours to an individual object dynamically without affecting the behaviour of other objects of the same class. It adheres to the Single Responsibility Principle as it allows functionality to be divided between classes with distinct demands. They are more efficient than subclassing as new behaviours can be added to an object without instantiating a completely new object.
 
 Extending a class is the first thing that comes to mind when we need to alter an object’s behaviour. However, inheritance has several serious limitations.
-Inheritance is static. We can't alter the behaviour of an existing object at runtime. We will have to replace the whole object with another object of a different subclass.
-In many programming languages, inheritance doesn't allow to inherit behaviours of multiple classes simultaneously.
-One of the most convenient ways to tackle these limitations is by using Aggregation/Composition rather than using inheritance. With this approach, it becomes very easy to substitute the linked "helper" object with another which ultimately enables us to change the behaviour of the container at runtime. 
+Inheritance is static. We can't alter the behaviour of an existing object at runtime. We will have to replace the whole object with another object of a different subclass. In many programming languages, inheritance doesn't allow to inherit behaviours of multiple classes simultaneously. With this approach, it becomes very easy to substitute the linked "helper" object with another which ultimately enables us to change the behaviour of the container at runtime. 
 
 
 
@@ -137,7 +135,7 @@ One of the most convenient ways to tackle these limitations is by using Aggregat
 
 ### *#Pseudocode*
 
-In this example, the Decorator pattern lets you compress and encrypt sensitive data independently from the code that actually uses this data.
+In this example, the Decorator pattern lets us to compress and encrypt sensitive data independently from the code that actually uses this data.
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(1).png" />
 
@@ -237,7 +235,7 @@ This pattern describes a group of objects that are treated similarly as that of 
 ### *#Pseudocode*
 
 The CompoundGraphic class is a container that can consist of any sub-shape, but the compound shape has limited methods as a simple shape. However, instead of doing something by itself, a compound shape passes the request recursively to its children and aggregates the result.
-The client code works with all shaps through the single interface typical to all shape classes. Thus, the performance does not get affected, and the client can work with sophisticated object structures.
+The client code works with all shapes through the single interface typical to all shape classes. Thus, the performance does not get affected, and the client can work with sophisticated object structures.
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(2).png" />
 
