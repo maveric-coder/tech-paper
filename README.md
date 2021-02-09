@@ -22,12 +22,14 @@ In other words, it can be stated as a solution to recurring problems that softwa
 ### Types of design patterns
 There are approximately 22 design patterns and  are grouped into 3 types:
 
-1. Creational: 
+**1. Creational:**
 These patterns provide various object creation mechanisms, which increase flexibility and reuse of existing code.
 
-2. Structural: These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
+**2. Structural:**
+These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
 
-3. Behavioral: These patterns are designed depending on how one class communicates with others.
+**3. Behavioral:**
+These patterns are designed depending on how one class communicates with others.
 
 
 ## 5 Types of design patterns:
