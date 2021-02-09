@@ -616,3 +616,7 @@ invoker.do_something_important
 4. [FreeCodeCamp](https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/)
 5. [Naturaily](https://naturaily.com/blog/ruby-on-rails-design-patterns)
 6. [Dev.to](https://dev.to/renatamarques97/design-patterns-with-ruby-on-rails-part-1-introduction-and-policy-object-1c37)
+
+
+## [Go to Top](#index)
+
