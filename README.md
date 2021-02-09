@@ -610,7 +610,7 @@ invoker.do_something_important
 
 ## Refrences
 
-1. [Wikipedia](https://en.wikipedia.org/wiki/Design_Patterns)
+1. [Wikipedia](https://en.wikipedia.org/wiki/Design_Patterns){:target="_blank"}
 2. [Refactoring Guru](https://refactoring.guru/design-patterns/ruby)
 3. [Geekswithblogs](http://geekswithblogs.net/subodhnpushpak/archive/2009/09/18/the-23-gang-of-four-design-patterns-.-revisited.aspx)
 4. [FreeCodeCamp](https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/)
