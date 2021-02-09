@@ -388,7 +388,7 @@ This design pattern enables to define a mechanism which notifies multiple object
 
 ### *#Pseudocode*
 
-In this example, the Observer pattern lets the text editor object notify other service objects about changes in its state. The list of subscribers is compiled dynamically: objects can start or stop listening to notifications at runtime, depending on the desired behavior of the app.
+In this example, the Observer pattern lets the text editor object notify other service objects about changes in its state. The list of subscribers is compiled dynamically: objects can start or stop listening to notifications at runtime, depending on the desired behaviour of the app.
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(3).png" />
 
