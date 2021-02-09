@@ -5,7 +5,11 @@
 * [Basic classification](#types-of-design-patterns)
 * [5 Types of Design Patterns](#5-types-of-design-patterns:)
     * [Prototype](#1-prototype)
-    * 
+    * [Decorator](#2-decorator)
+    * [Composite](#3-composite)
+    * [Observer](#4-observer)
+    * [Command](#5-command)
+
 
 
 ### What is a Design Pattern?
