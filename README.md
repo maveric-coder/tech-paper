@@ -10,7 +10,7 @@
     * [Observer](#4-observer)
     * [Command](#5-command)
 
-
+* [Refrences](#refrences)
 
 ### What is a Design Pattern?
 
@@ -42,7 +42,6 @@ Prototype is a creational design pattern that makes use of existing objects with
 In this example, the Composite pattern enables us to implement stacking of geometric shapes in a graphical editor.
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example.png" />
 
-s
 ```
 # The example class that has cloning ability. We'll see how the values of field
 # with different types will be cloned.
