@@ -25,7 +25,7 @@ These patterns provide various object creation mechanisms, which increase flexib
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/prototype.png" />
 
-Prototype is a creational design pattern that makes use of existing objects without making the code dependent on their classes. It avoids the inherent cost of creating a new object in the standard way. The implementation of this method is typical in all classes. This method creates an object of the current class and carries over all of the field values of the old object into the new one. 
+Prototype is a creational design pattern that makes use of existing objects without making the code dependent on their classes. It avoids the hidden cost of creating a new object in the standard way. The implementation of this method is typical in all classes. This method creates an object of the current class and carries over all of the field values of the old object into the new one. 
 
 ### *#Pseudocode*
 In this example, the Composite pattern enables us to implement stacking of geometric shapes in a graphical editor.
@@ -373,7 +373,7 @@ client_code2(tree, simple)
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/observer.png" />
 
-This design pattern enables to define a subscription mechanism which notifies multiple objects automatically, in case of any changes made on the method under observation. It is used for implementing distributed event handling systems in event-driven software. 
+This design pattern enables to define a mechanism which notifies multiple objects automatically, in case of any changes made on the method under observation. It is used for implementing distributed event handling systems in event-driven software. 
 
 
 ### *#Pseudocode*
