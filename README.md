@@ -618,5 +618,5 @@ invoker.do_something_important
 6. [Dev.to](https://dev.to/renatamarques97/design-patterns-with-ruby-on-rails-part-1-introduction-and-policy-object-1c37)
 
 
-### >[Go to Top](#design-patterns)
+### > [Go to Top](#design-patterns)
 
