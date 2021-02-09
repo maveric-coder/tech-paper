@@ -135,7 +135,7 @@ Inheritance is static. We can't alter the behaviour of an existing object at run
 
 ### *#Pseudocode*
 
-In this example, the Decorator pattern lets us to compress and encrypt sensitive data independently from the code that actually uses this data.
+In this example, the Decorator pattern lets us compress and encrypt sensitive data independently from the code that actually uses this data.
 
 <img src = "https://github.com/maveric-coder/tech-paper/blob/main/pics/example%20(1).png" />
 
